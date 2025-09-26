@@ -1,7 +1,5 @@
 import Footer from "@/components/html/Footer/Footer";
 import Header from "@/components/html/Header/Header";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -9,7 +7,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
             <Header />
 
             <main
-                className="shrink-1 grow-1 basis-0  mb-6
+                className="shrink-1 grow-1 basis-0  mb-6 
                              lg:mb-8               
                              xl:mb-10   
                              rounded-md  

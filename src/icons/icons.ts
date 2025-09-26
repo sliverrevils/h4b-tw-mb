@@ -1,0 +1,29 @@
+import { ISvg } from "@/types/types";
+
+import plus from "@/assets/svg/plus.svg";
+import groupComb from "@/assets/svg/groups_combine.svg";
+import groupSplit from "@/assets/svg/groups_split.svg";
+import params from "@/assets/svg/params.svg";
+import boxBig from "@/assets/svg/box-big.svg";
+import close from "@/assets/svg/close.svg";
+import timer from "@/assets/svg/timer.svg";
+import usa from "@/assets/svg/usa.svg";
+import exit from "@/assets/svg/exit.svg";
+import arrowLeft from "@/assets/svg/arrowLeft.svg";
+import error from "@/assets/svg/error.svg";
+import caretdown from "@/assets/svg/caret-down.svg";
+import sealpercent from "@/assets/svg/seal-percent.svg";
+
+export const PlusIco = plus as ISvg;
+export const GroupsCombineIco = groupComb as ISvg;
+export const GroupsSplitIco = groupSplit as ISvg;
+export const ParamsIco = params as ISvg;
+export const BoxBigIco = boxBig as ISvg;
+export const CloseIco = close as ISvg;
+export const TimerIco = timer as ISvg;
+export const USAIco = usa as ISvg;
+export const ExitIco = exit as ISvg;
+export const ArrowLEftIco = arrowLeft as ISvg;
+export const ErrorIco = error as ISvg;
+export const Caretdown = caretdown as ISvg;
+export const SealPercent = sealpercent as ISvg;

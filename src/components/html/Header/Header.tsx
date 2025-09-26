@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Header({ className = "" }: { className?: string }) {
     return (
         <header
-            className={`flex py-2 justify-between  
+            className={`flex py-2 justify-between items-center  
                                 xl:py-4.5 ${className}
                                 `}
         >
@@ -22,7 +22,7 @@ export default function Header({ className = "" }: { className?: string }) {
             </Link>
             <div className="flex gap-4 items-center">
                 <Link
-                    href={"/user"}
+                    href={"/user/track"}
                     className="link text-f-accent hidden
                                     md:block
                                     cursor-pointer
@@ -41,8 +41,8 @@ export default function Header({ className = "" }: { className?: string }) {
                 </Link>
                 <Link
                     href={"/register"}
-                    className="button-1 text-center bg-f-accent text-f-white-100 py-2.5 px-8  rounded-full
-                                   md:self-start 
+                    className="button-1 text-center bg-f-accent text-f-white-100 py-2 px-4   rounded-full
+                                   md:self-start md:py-2.5 md:px-8
                                    cursor-pointer
                                     "
                 >

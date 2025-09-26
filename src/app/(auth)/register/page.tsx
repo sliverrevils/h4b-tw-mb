@@ -33,12 +33,18 @@ export default function RegisterPage() {
                     action={formAction}
                 >
                     <input
+                        name="name"
+                        type="text"
+                        placeholder="Имя"
+                        className="body-3 p-4 bg-f-gray-50 rounded-[8px] w-full"
+                    />
+                    <input
                         name="email"
                         type="text"
                         placeholder="E-mail"
                         className="body-3 p-4 bg-f-gray-50 rounded-[8px] w-full"
                     />
-                    <PhoneField />
+                    <PhoneField name="phone_mob" />
 
                     <div className="w-full flex flex-col gap-4">
                         <InputPassword name="password" placeholder="Введите пароль" />

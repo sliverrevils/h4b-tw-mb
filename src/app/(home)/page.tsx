@@ -17,6 +17,7 @@ import Comfort from "@/assets/png/comfort.png";
 import Cashback from "@/assets/png/cashback.png";
 import BoxHands from "@/assets/jpg/boxhands.jpg";
 import Boxes from "@/assets/png/boxes2.png";
+import Worker from "@/assets/png/worker.png";
 
 import Comm1 from "@/assets/png/comm1.png";
 import Comm2 from "@/assets/png/comm2.png";
@@ -32,6 +33,7 @@ import Ebay from "@/assets/png/brands/ebay.png";
 import Costco from "@/assets/png/brands/costco.png";
 import Target from "@/assets/png/brands/target.png";
 import SC from "@/assets/png/brands/sc.png";
+import { SealPercent } from "@/icons/icons";
 
 export default function Home() {
     console.log(Star.src);
@@ -444,7 +446,12 @@ export default function Home() {
                                             </div>
                                             <div className="h4 text-f-blue-950">Россия</div>
                                         </div>
-                                        <input type="range" value={80} className="slider" />
+                                        <input
+                                            type="range"
+                                            value={80}
+                                            className="slider cursor-default"
+                                            readOnly
+                                        />
                                     </div>
                                     <div
                                         className="flex gap-2.5 items-center
@@ -489,7 +496,15 @@ export default function Home() {
                     "
                     >
                         <div className="box bg-f-accent flex flex-col gap-10.5">
-                            <Image src={Cashback} width={86} height={56} alt="cashback" />
+                            {/* <Image src={Cashback} width={86} height={56} alt="cashback" /> */}
+                            <div className="flex">
+                                <div className="bg-f-white-100 w-20 h-20 rounded-full flex items-center justify-center border-2 border-f-accent z-10">
+                                    <SealPercent />
+                                </div>
+                                <div className="bg-f-white-100 w-20 h-20 rounded-full flex items-center justify-center border-2 border-f-accent overflow-hidden -translate-x-1/2">
+                                    <Image src={Worker} alt="worker" />
+                                </div>
+                            </div>
                             <div className="flex flex-col gap-4">
                                 <div className="h4 text-f-white-100">Кэшбек</div>
                                 <div className="body-1 text-f-white-100">

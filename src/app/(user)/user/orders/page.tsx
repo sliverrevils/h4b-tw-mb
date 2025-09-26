@@ -1,7 +1,112 @@
+import OrderFilter from "@/components/ui/OrderFilter/OrderFilter";
+import {
+    BoxBigIco,
+    CloseIco,
+    GroupsCombineIco,
+    GroupsSplitIco,
+    ParamsIco,
+    PlusIco,
+} from "@/icons/icons";
+
 export default function OrderPage() {
     return (
-        <div>
-            <h1>Orders</h1>
+        <div className="flex flex-col w-full h-full ">
+            <div
+                className="flex flex-col gap-8 border-b border-b-f-gray-200 pb-4
+                lg:gap-10
+            "
+            >
+                <div className="flex justify-between">
+                    <div className="h3 text-f-blue-950">Мои заказы</div>
+                    <div
+                        className=" gap-4 hidden
+                                    md:flex
+                                    "
+                    >
+                        <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-accent">
+                            <div className="button-2 text-white">Создать заказ</div>
+                            <PlusIco className="**:text-white" width={18} height={18} />
+                        </div>
+                        <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-white-100">
+                            <div className="button-2 text-f-accent">Объединить группы</div>
+                            <GroupsCombineIco className="**:text-white" width={18} height={18} />
+                        </div>
+                        <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-white-100">
+                            <div className="button-2 text-f-accent">Разделить заказ</div>
+                            <GroupsSplitIco className="**:text-white" width={18} height={18} />
+                        </div>
+                    </div>
+                </div>
+
+                {/* МОДАЛКА МЕНЮ */}
+                {true && (
+                    <div
+                        className="bg-black/30  fixed inset-0 p-4 flex items-start justify-end z-10
+                                md:hidden
+                                sm:
+                                "
+                    >
+                        <div className="bg-f-white-100 rounded-lg p-4 flex flex-col gap-4">
+                            <div className="flex justify-between">
+                                <div className="h4-accent">Действия</div>
+                                <CloseIco className="cursor-pointer" />
+                            </div>
+                            <div className="flex flex-col gap-2">
+                                <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-accent">
+                                    <div className="button-2 text-white">Создать заказ</div>
+                                    <PlusIco className="**:text-white" width={18} height={18} />
+                                </div>
+                                <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-white-100">
+                                    <div className="button-2 text-f-accent">Объединить группы</div>
+                                    <GroupsCombineIco
+                                        className="**:text-white"
+                                        width={18}
+                                        height={18}
+                                    />
+                                </div>
+                                <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-white-100">
+                                    <div className="button-2 text-f-accent">Разделить заказ</div>
+                                    <GroupsSplitIco
+                                        className="**:text-white"
+                                        width={18}
+                                        height={18}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                <div
+                    className="flex flex-col justify-between gap-4 
+                                md:flex-row
+                                "
+                >
+                    <div className="flex ">
+                        <div className="tag text-f-blue-950 bg-f-gray-50 py-3 px-4 rounded-xl">
+                            В процессе (0)
+                        </div>
+                        <div className="tag text-f-blue-500 bg-transparent py-3 px-4 rounded-xl">
+                            Завершенные
+                        </div>
+                    </div>
+                    <OrderFilter />
+                </div>
+            </div>
+
+            <div className=" w-full h-full  overflow-y-auto">
+                <div className="w-full h-full flex items-center justify-center ">
+                    <div className="flex flex-col gap-4">
+                        <BoxBigIco className="self-center" />
+                        <div className="body-1 text-f-blue-950">
+                            У вас нет ожидаемых входящих посылок
+                        </div>
+                        <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-accent self-center">
+                            <div className="button-2 text-white">Создать заказ</div>
+                            <PlusIco className="**:text-white" width={18} height={18} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }
