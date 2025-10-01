@@ -1,4 +1,4 @@
-import InputPassword from "@/components/ui/InputPass/InputPass";
+import BaseInput from "@/components/ui/BaseInput/BaseInput";
 import Link from "next/link";
 
 export default function RegisterPage() {
@@ -31,16 +31,12 @@ export default function RegisterPage() {
                                     "
                     action={formAction}
                 >
-                    <input
-                        name="email"
-                        type="text"
-                        placeholder="E-mail"
-                        className="body-3 p-4 bg-f-gray-50 rounded-[8px] w-full"
-                    />
+                    <BaseInput inputName="email" placeholder="E-mail" inputType="email" required />
 
                     <button
                         type="submit"
-                        className="button-1 py-[11px] px-[70px] text-f-white-100 bg-f-accent self-start  rounded-full cursor-pointer"
+                        className="button-1 py-[11px] px-[70px] text-f-white-100 bg-f-accent self-start  rounded-full cursor-pointer 
+                                    disabled:bg-f-blue-disabled"
                     >
                         Восстановить
                     </button>

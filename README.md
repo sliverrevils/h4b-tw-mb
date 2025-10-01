@@ -34,3 +34,7 @@ npm install @svgr/webpack --save-dev
     };
 
 ## ngrok http http://localhost:3000
+
+Auth.js
+npm install next-auth@beta
+npx auth secret

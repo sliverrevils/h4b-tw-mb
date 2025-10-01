@@ -1,11 +1,9 @@
-import InputPassword from "@/components/ui/InputPass/InputPass";
+import BaseInput from "@/components/ui/BaseInput/BaseInput";
 import Link from "next/link";
+import LoginForm from "./loginForm";
+import { Suspense } from "react";
 
 export default function LoginPage() {
-    async function formAction(formData: FormData) {
-        "use server";
-        console.log("❤️", formData);
-    }
     return (
         <div className="bg-f-gray-50 h-full flex justify-center items-center">
             <div
@@ -25,33 +23,9 @@ export default function LoginPage() {
                         </Link>
                     </div>
                 </div>
-                <form
-                    className=" flex flex-col gap-4 
-                            xl:gap-6
-                            "
-                    action={formAction}
-                >
-                    <input
-                        name="email"
-                        type="text"
-                        placeholder="E-mail"
-                        className="body-3 p-4 bg-f-gray-50 rounded-[8px] w-full"
-                    />
-
-                    <div className="w-full flex flex-col gap-2">
-                        <InputPassword name="password" placeholder="Введите ваш пароль" />
-                        <Link href={"/recover"} className="body-3 text-f-blue-950 cursor-pointer">
-                            Забыли пароль?
-                        </Link>
-                    </div>
-                    <Link
-                        href={"/user"}
-                        type="submit"
-                        className="button-1 py-[11px] px-[70px] text-f-white-100 bg-f-accent self-start  rounded-full cursor-pointer"
-                    >
-                        Войти
-                    </Link>
-                </form>
+                <Suspense>
+                    <LoginForm />
+                </Suspense>
             </div>
         </div>
     );

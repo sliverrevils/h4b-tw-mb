@@ -1,12 +1,10 @@
-import InputPassword from "@/components/ui/InputPass/InputPass";
+import BaseInput from "@/components/ui/BaseInput/BaseInput";
+
 import PhoneField from "@/components/ui/InputPhone/InputPhone";
 import Link from "next/link";
+import RegisterForm from "./registerForm";
 
 export default function RegisterPage() {
-    async function formAction(formData: FormData) {
-        "use server";
-        console.log("❤️", formData);
-    }
     return (
         <div className="bg-f-gray-50 h-full flex justify-center items-center">
             <div
@@ -26,37 +24,7 @@ export default function RegisterPage() {
                         </Link>
                     </div>
                 </div>
-                <form
-                    className=" flex flex-col gap-4 
-                                    xl:gap-6
-                                    "
-                    action={formAction}
-                >
-                    <input
-                        name="name"
-                        type="text"
-                        placeholder="Имя"
-                        className="body-3 p-4 bg-f-gray-50 rounded-[8px] w-full"
-                    />
-                    <input
-                        name="email"
-                        type="text"
-                        placeholder="E-mail"
-                        className="body-3 p-4 bg-f-gray-50 rounded-[8px] w-full"
-                    />
-                    <PhoneField name="phone_mob" />
-
-                    <div className="w-full flex flex-col gap-4">
-                        <InputPassword name="password" placeholder="Введите пароль" />
-                        <InputPassword name="password2" placeholder="Повторите пароль" />
-                    </div>
-                    <button
-                        type="submit"
-                        className="button-1 py-[11px] px-[70px] text-f-white-100 bg-f-accent self-start  rounded-full cursor-pointer"
-                    >
-                        Войти
-                    </button>
-                </form>
+                <RegisterForm />
             </div>
         </div>
     );

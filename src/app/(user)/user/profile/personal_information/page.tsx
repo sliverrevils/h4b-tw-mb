@@ -8,48 +8,56 @@ export default function PersonalInformationPage() {
         <div className="w-full h-full py-8">
             <form
                 className="flex flex-col gap-4
-                                lg:gap-6 lg:max-w-[413px]
-                                "
+                            lg:gap-6 lg:max-w-[413px]
+                            "
+                action={async (fd) => {
+                    "use server";
+                    console.log("FORM", fd);
+                }}
             >
                 <div
                     className="columns-1 row-auto *:mb-4
                                 md:columns-2 
                                 lg:columns-1  
                                 "
-                    // className="flex flex-col gap-4
-                    //             md:max-w-[413px]
-                    //             lg:gap-6
-                    //             "
                 >
                     <BaseInput
-                        inputName="firstName"
+                        inputName="name"
                         name="Имя"
                         errMsg="Имя должно содержать от 2 до 10 букв без цифр и специальных символов."
-                        checkInput="name"
+                        inputType="name"
                     />
                     <BaseInput
-                        inputName="firstName"
+                        inputName="surname"
                         name="Фамилия"
                         errMsg="Фамилия должна содержать от 2 до 10 букв без цифр и специальных символов."
-                        checkInput="name"
+                        inputType="name"
+                    />
+                    <BaseInput
+                        inputName="patronymic"
+                        name="Отчество"
+                        errMsg="Отчество должно содержать от 2 до 15 букв без цифр и специальных символов."
+                        inputType="name"
+                        required={false}
                     />
                     <div className="flex flex-col gap-2">
                         <div className="body-3 text-f-blue-500">День рождения</div>
                         <input
                             required
+                            name="bithday"
                             type="date"
                             className="body-3 text-f-blue-950 bg-f-gray-50 p-4 rounded-lg w-full "
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <div className="body-3 text-f-blue-500">Контактный номер</div>
-                        <PhoneField name="phone" />
+                        <div className="body-3 text-f-blue-500">Основной номер</div>
+                        <PhoneField inputName="phone1" required />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <div className="body-3 text-f-blue-500">Мобильный номер</div>
-                        <PhoneField name="phone_mob" />
+                        <div className="body-3 text-f-blue-500">Дополнительный номер</div>
+                        <PhoneField inputName="phone2" required={false} />
                     </div>
-                    <BaseInput name="Email Address" inputName="email" checkInput="email" />
+                    <BaseInput name="Email Address" inputName="email" inputType="email" />
                 </div>
                 <div
                     className="flex flex-col gap-4
@@ -76,11 +84,11 @@ export default function PersonalInformationPage() {
                     <div className="w-full relative">
                         <select
                             className="appearance-none body-3 text-f-blue-950 bg-f-gray-50 p-4 rounded-lg w-full outline-0"
-                            name=""
+                            name="gender"
+                            defaultValue={"gender"}
+                            required
                         >
-                            <option value="gender" disabled>
-                                Выберите пол
-                            </option>
+                            <option disabled>Выберите пол</option>
                             <option value="male">Мужской</option>
                             <option value="female">Женский</option>
                         </select>
@@ -98,7 +106,10 @@ export default function PersonalInformationPage() {
                     >
                         Поменять пароль
                     </Link>
-                    <button className="button-1 border-1 border-f-accent p-[11px] px-6 rounded-full text-center cursor-pointer text-f-white-100 bg-f-accent">
+                    <button
+                        type="submit"
+                        className="button-1 border-1 border-f-accent p-[11px] px-6 rounded-full text-center cursor-pointer text-f-white-100 bg-f-accent"
+                    >
                         Сохранить
                     </button>
                 </div>

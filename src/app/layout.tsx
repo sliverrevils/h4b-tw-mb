@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import "@/styles/tailwind.css";
 import "@/styles/globals.scss";
+import { ToastContainer } from "react-toastify";
 
 const interFont = Inter({
     variable: "--font-inter",
@@ -22,7 +23,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${interFont.variable}  antialiased`}>{children}</body>
+            <body className={`${interFont.variable}  antialiased`}>
+                <ToastContainer />
+                {children}
+            </body>
         </html>
     );
 }

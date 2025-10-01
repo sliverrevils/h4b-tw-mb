@@ -20,3 +20,9 @@ export interface IBranch {
     index: string;
     phone: string;
 }
+
+export type IResultType = "success" | "warning" | "error";
+export interface IActionResult {
+    type: IResultType;
+    message: string;
+}

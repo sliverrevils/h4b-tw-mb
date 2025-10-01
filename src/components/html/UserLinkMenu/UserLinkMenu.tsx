@@ -9,6 +9,7 @@ import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { IUserMenuItem } from "../../../types/types";
 import { USER_ASIDE_MENU_ITEMS, USER_FOOTER_MENU_ITEMS } from "@/data/constants/menus";
+import { signOut } from "next-auth/react";
 
 export function UserAsideLinkMenu() {
     const path = usePathname();
@@ -51,7 +52,14 @@ export function UserAsideLinkMenu() {
                 <div>
                     <Exit className="**:fill-f-blue-500" />
                 </div>
-                <div className="button-2 text-f-blue-950 w-full">Выйти</div>
+                <div
+                    className="button-2 text-f-blue-950 w-full"
+                    onClick={() => {
+                        signOut({ redirectTo: "/" });
+                    }}
+                >
+                    Выйти
+                </div>
             </Link>
         </aside>
     );

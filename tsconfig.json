@@ -28,6 +28,7 @@
         ".next/types/*.ts",
         "next-env.d.ts",
         "src/types/svg.d.ts",
+        "src/types/next-auth.d.ts",
         ".next/types/**/*.ts"
     ],
     "exclude": ["node_modules"]
