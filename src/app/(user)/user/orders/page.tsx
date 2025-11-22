@@ -1,4 +1,5 @@
 import OrderFilter from "@/components/ui/OrderFilter/OrderFilter";
+import { progectPathes } from "@/config/pathes";
 import {
     BoxBigIco,
     CloseIco,
@@ -7,6 +8,7 @@ import {
     ParamsIco,
     PlusIco,
 } from "@/icons/icons";
+import Link from "next/link";
 
 export default function OrderPage() {
     return (
@@ -100,10 +102,13 @@ export default function OrderPage() {
                         <div className="body-1 text-f-blue-950">
                             У вас нет ожидаемых входящих посылок
                         </div>
-                        <div className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-accent self-center">
+                        <Link
+                            href={progectPathes.ordersId.path + "new_order"}
+                            className="flex gap-[11px] items-center justify-center px-6 py-2 md:py-3 border border-f-accent rounded-full bg-f-accent self-center"
+                        >
                             <div className="button-2 text-white">Создать заказ</div>
                             <PlusIco className="**:text-white" width={18} height={18} />
-                        </div>
+                        </Link>
                     </div>
                 </div>
             </div>

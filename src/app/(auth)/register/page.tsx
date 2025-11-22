@@ -1,8 +1,5 @@
-import BaseInput from "@/components/ui/BaseInput/BaseInput";
-
-import PhoneField from "@/components/ui/InputPhone/InputPhone";
 import Link from "next/link";
-import RegisterForm from "./registerForm";
+import RegisterForm from "../../../components/forms/singUpForm";
 
 export default function RegisterPage() {
     return (
@@ -24,6 +21,7 @@ export default function RegisterPage() {
                         </Link>
                     </div>
                 </div>
+
                 <RegisterForm />
             </div>
         </div>

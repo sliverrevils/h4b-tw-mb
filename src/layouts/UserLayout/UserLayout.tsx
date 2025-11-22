@@ -1,12 +1,9 @@
-import Order from "@/assets/svg/order.svg";
-import Accounts from "@/assets/svg/accounts.svg";
-import Branches from "@/assets/svg/branches.svg";
-import Track from "@/assets/svg/track.svg";
 import Header from "@/components/html/Header/Header";
 import UserInfo from "@/components/common/UserInfo/UserInfo";
 
 import Link from "next/link";
 import { UserAsideLinkMenu, UserFooterLinkMenu } from "@/components/html/UserLinkMenu/UserLinkMenu";
+import BackPageInfoPanel from "@/components/html/BackPageInfoPanel/BackPageInfoPanel";
 
 export default function UserLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -55,7 +52,8 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
                     <UserAsideLinkMenu />
                 </div>
             </header>
-            <main className="box bg-f-white-100 w-full overflow-y-auto h-[100%] shrink-1 grow-1 basis-0 relative">
+            <main className=" box bg-f-white-100 w-full overflow-y-auto h-[100%] shrink-1 grow-1 basis-0 relative">
+                <BackPageInfoPanel />
                 {children}
             </main>
             <footer

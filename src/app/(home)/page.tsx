@@ -36,7 +36,6 @@ import SC from "@/assets/png/brands/sc.png";
 import { SealPercent } from "@/icons/icons";
 
 export default function Home() {
-    console.log(Star.src);
     return (
         <div className="flex flex-col gap-[96px] md:gap-[140px] xl:gap-[180px]">
             <div className="firstBox  bg-f-gray-50 flex flex-col gap-12">

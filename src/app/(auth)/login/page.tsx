@@ -1,6 +1,5 @@
-import BaseInput from "@/components/ui/BaseInput/BaseInput";
 import Link from "next/link";
-import LoginForm from "./loginForm";
+import LoginForm from "../../../components/forms/loginForm";
 import { Suspense } from "react";
 
 export default function LoginPage() {

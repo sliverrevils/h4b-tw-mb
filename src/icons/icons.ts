@@ -1,6 +1,7 @@
 import { ISvg } from "@/types/types";
 
 import plus from "@/assets/svg/plus.svg";
+import minus from "@/assets/svg/minus.svg";
 import groupComb from "@/assets/svg/groups_combine.svg";
 import groupSplit from "@/assets/svg/groups_split.svg";
 import params from "@/assets/svg/params.svg";
@@ -13,8 +14,12 @@ import arrowLeft from "@/assets/svg/arrowLeft.svg";
 import error from "@/assets/svg/error.svg";
 import caretdown from "@/assets/svg/caret-down.svg";
 import sealpercent from "@/assets/svg/seal-percent.svg";
+import eye from "@/assets/svg/eye.svg";
+import eyeClose from "@/assets/svg/eyeClose.svg";
+import user from "@/assets/svg/user.svg";
 
 export const PlusIco = plus as ISvg;
+export const MinusIco = minus as ISvg;
 export const GroupsCombineIco = groupComb as ISvg;
 export const GroupsSplitIco = groupSplit as ISvg;
 export const ParamsIco = params as ISvg;
@@ -27,3 +32,6 @@ export const ArrowLEftIco = arrowLeft as ISvg;
 export const ErrorIco = error as ISvg;
 export const Caretdown = caretdown as ISvg;
 export const SealPercent = sealpercent as ISvg;
+export const Eye = eye as ISvg;
+export const EyeClose = eyeClose as ISvg;
+export const UserIco = user as ISvg;

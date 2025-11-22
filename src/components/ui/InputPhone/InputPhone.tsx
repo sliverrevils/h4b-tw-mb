@@ -11,9 +11,11 @@ import EyeClose from "@/assets/svg/eyeClose.svg";
 export default function PhoneField({
     inputName,
     required = false,
+    inputProps,
 }: {
     inputName: string;
     required?: boolean;
+    inputProps?: any;
 }) {
     const [value, setValue] = useState("");
     const [error, setError] = useState("");
@@ -40,7 +42,8 @@ export default function PhoneField({
                     inputProps={{
                         name: inputName,
                         required,
-                        autoComplete: "tel",
+                        //autoComplete: "tel",
+                        ...inputProps,
                     }}
                 />
                 {isError && <ErrorIco className="absolute right-2 top-1/2 -translate-y-1/2" />}

@@ -13,7 +13,7 @@ export default function UserProfileMenu() {
                 const isSelected = path.includes(name);
                 const selectedBg = isSelected ? "bg-f-gray-50" : "";
                 const selectedText = isSelected ? "text-f-accent" : "text-f-blue-500";
-                console.log(path);
+
                 return (
                     <Link
                         href={`/user/profile/${name}`}

@@ -1,4 +1,4 @@
-import BaseInput from "@/components/ui/BaseInput/BaseInput";
+import { Input } from "@/components/ui/FormElements/Input";
 import Link from "next/link";
 
 export default function RegisterPage() {
@@ -31,7 +31,7 @@ export default function RegisterPage() {
                                     "
                     action={formAction}
                 >
-                    <BaseInput inputName="email" placeholder="E-mail" inputType="email" required />
+                    <Input name="email" type="email" required placeholder="E-mail" />
 
                     <button
                         type="submit"

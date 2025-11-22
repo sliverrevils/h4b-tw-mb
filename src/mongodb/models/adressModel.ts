@@ -1,9 +1,13 @@
 import { Schema, model, models, Types, Document, Model } from "mongoose";
 
-export interface IAddress {
+export interface IAdress {
+    _id?: string;
     userId: Types.ObjectId;
     country: string;
-    deliveryType: string; // например: "express", "pickup"
+    adress: string;
+    city: string;
+    zip_code_eng?: string;
+    //deliveryType: string; // например: "express", "pickup"
     deliveryMethod: "warehouse" | "courier"; // до склада или до двери
     isBusiness: boolean;
 
@@ -11,11 +15,11 @@ export interface IAddress {
     recipientName?: string;
     recipientSurname?: string;
     recipientPatronymic?: string;
-    recipientIdNumber?: string;
+    recipientInnNumber?: string;
     passportSeriesNumber?: string;
     passportIssuedBy?: string;
-    passportIssuedDate?: Date;
-    recipientBirthDate?: Date;
+    passportIssuedDate?: string;
+    recipientBirthDate?: string;
     recipientEmail?: string;
 
     // для бизнеса
@@ -23,42 +27,48 @@ export interface IAddress {
 
     phone1: string;
     phone2?: string;
-    addressLine: string;
 
     isDefault?: boolean;
-    createdAt: Date;
+    isConfirmed?: boolean;
+    admin_description?: string;
+    createdAt?: Date;
 }
 
-export interface IAddressDocument extends IAddress, Document {}
+export interface IAdressDocument extends Omit<IAdress, "_id">, Document {}
 
 //! ВСЯ ИНФА О ТОМ КТО ПОЛУЧАЕТ
-const addressSchema = new Schema<IAddressDocument>(
+const adressSchema = new Schema<IAdressDocument>(
     {
-        userId: { type: Schema.Types.ObjectId, ref: "User", required: true },
-        country: { type: String, required: true },
-        deliveryType: { type: String, required: true },
-        deliveryMethod: { type: String, enum: ["warehouse", "courier"], required: true },
+        userId: { type: Schema.Types.ObjectId, ref: "User", required: true }, // ПОЛЬЗОВАТЕЛЬ КОТОРЫЙ ДОБАВИЛ ЭТОТ АДРЕСС
+
+        country: { type: String, required: true }, // СТРАНА
+        adress: { type: String, required: true },
+        city: { type: String, required: true },
+        zip_code_eng: { type: String, default: null },
+        deliveryMethod: { type: String, enum: ["warehouse", "courier"], required: true }, //СПОСОБ ДОСТАВКИ
         isBusiness: { type: Boolean, required: true },
-
-        // для физлица
-        recipientName: { type: String },
-        recipientSurname: { type: String },
-        recipientPatronymic: { type: String },
-        recipientIdNumber: { type: String }, // СЕРЙИНИК ПАСПОРТА
-        passportSeriesNumber: { type: String }, // ИНН/ИИН/УНП получателя
-        passportIssuedBy: { type: String }, //Кем выдан
-        passportIssuedDate: { type: Date }, //Дата выдачи паспорта
-        recipientBirthDate: { type: Date }, //Дата рождения получателя
-        recipientEmail: { type: String }, //эл. почта (email)
-
-        // для бизнеса
-        companyName: { type: String },
-
         phone1: { type: String, required: true },
         phone2: { type: String },
-        addressLine: { type: String, required: true },
+
+        // для физлица
+        recipientName: { type: String, default: null },
+        recipientSurname: { type: String, default: null },
+        recipientPatronymic: { type: String, default: null },
+        recipientInnNumber: { type: String, default: null }, //ИНН/ИИН/УНП получателя
+        passportSeriesNumber: { type: String, default: null }, // СЕРЙИНИК ПАСПОРТА
+        passportIssuedBy: { type: String, default: null }, //Кем выдан
+        passportIssuedDate: { type: Date, default: null }, //Дата выдачи паспорта
+        recipientBirthDate: { type: Date, default: null }, //Дата рождения получателя
+        recipientEmail: { type: String, default: null }, //эл. почта (email)
+
+        // для бизнеса
+        companyName: { type: String, default: null },
 
         isDefault: { type: Boolean, default: false },
+
+        isConfirmed: { type: Boolean, default: false },
+        admin_description: { type: String, default: null },
+
         createdAt: { type: Date, default: Date.now },
     },
     {
@@ -93,5 +103,5 @@ const addressSchema = new Schema<IAddressDocument>(
 //     next();
 // });
 
-export const AddressModel: Model<IAddressDocument> =
-    models.Address || model<IAddressDocument>("Address", addressSchema);
+export const AdressModel: Model<IAdressDocument> =
+    models?.Adress || model<IAdressDocument>("Adress", adressSchema);

@@ -1,9 +1,13 @@
-import NextAuth from "next-auth";
+import NextAuth, { CredentialsSignin } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 import bcrypt from "bcryptjs";
 import { IUserRole, UserModel } from "./mongodb/models/userModel";
 import { connectDB } from "./mongodb/connect";
+
+class UserBlockedError extends CredentialsSignin {
+    code = "user_blocked";
+}
 
 export const {
     auth,
@@ -25,9 +29,12 @@ export const {
 
                 const user = await UserModel.findOne({ email: credentials.email }).lean();
 
-                if (!user || user.is_blocked) return null;
+                if (!user) return null;
+
+                if (user.is_blocked) throw new UserBlockedError();
 
                 const isValid = await bcrypt.compare(credentials.password as string, user.password);
+
                 if (!isValid) return null;
 
                 return {
@@ -39,7 +46,7 @@ export const {
             },
         }),
     ],
-    trustHost: true, //!Дает заходить не только c HTTPS
+    trustHost: true, //!Дает авторизироваться не только c HTTPS
 
     pages: {
         signIn: "/login",

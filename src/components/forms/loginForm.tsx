@@ -1,8 +1,8 @@
 "use client";
-import BaseInput from "@/components/ui/BaseInput/BaseInput";
+
+import { Input } from "@/components/ui/FormElements/Input";
 import { loginAction } from "@/libs/formActions/usersActionClient";
 
-import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
@@ -11,9 +11,12 @@ export default function LoginForm() {
     const search = useSearchParams();
 
     const errorMemo = useMemo(() => {
-        const error = search.get("error");
-        if (error == "CredentialsSignin") {
+        const error = search.get("code");
+        if (error == "credentials") {
             return <div className="text-f-error"> Ошибка логина или пароля</div>;
+        }
+        if (error == "user_blocked") {
+            return <div className="text-f-error"> Ваш аккаунт заблокирован администратором</div>;
         }
         return false;
     }, [search]);
@@ -26,19 +29,16 @@ export default function LoginForm() {
             action={loginAction}
         >
             {errorMemo}
-            <BaseInput inputName="email" inputType="email" placeholder="E-mail" />
+
+            <Input name="email" type="email" placeholder="E-mail" required />
 
             <div className="w-full flex flex-col gap-2">
-                <BaseInput
-                    inputName="password"
-                    placeholder="Введите ваш пароль"
-                    inputType="password"
-                    isCheckReg={false}
-                />
+                <Input name="password" placeholder="Введите ваш пароль" required hideEye />
                 <Link href={"/recover"} className="body-3 text-f-blue-950 cursor-pointer">
                     Забыли пароль?
                 </Link>
             </div>
+
             <button
                 type="submit"
                 className="button-1 py-[11px] px-[70px] text-f-white-100 bg-f-accent self-start  rounded-full cursor-pointer"

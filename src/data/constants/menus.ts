@@ -23,11 +23,11 @@ export const USER_ASIDE_MENU_ITEMS: Array<IUserMenuItem> = [
     },
     {
         name: "track",
-        title: "Отследить посылку ",
+        title: "Отследить посылку",
         Ico: Track,
     },
     {
-        name: "profile/personal_information",
+        name: "profile",
         title: "Мой профиль ",
         Ico: Profile,
     },

@@ -11,16 +11,6 @@ export interface IUserProfileMenuItem {
     name: string;
 }
 
-export interface IBranch {
-    name: string;
-    period: string;
-    id_branch: string;
-    adress: string;
-    city: string;
-    index: string;
-    phone: string;
-}
-
 export type IResultType = "success" | "warning" | "error";
 export interface IActionResult {
     type: IResultType;

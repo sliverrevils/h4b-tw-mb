@@ -1,5 +1,7 @@
 import { model, models, Schema, Model, Document, Types } from "mongoose";
-import { IAddress } from "./adressModel";
+import { IAdress, AdressModel } from "./adressModel";
+import { IOrder } from "./orderModel";
+AdressModel; //! Просто подгружаем что бы  populate  его находил
 
 export type IUserRole = "user" | "admin" | "super";
 
@@ -11,7 +13,7 @@ export interface IUser {
     gender?: "male" | "female";
     password: string;
     role?: IUserRole;
-    birthday?: Date;
+    birthday?: string;
     phone1: string;
     phone2?: string;
     email: string;
@@ -23,20 +25,19 @@ export interface IUser {
     bonus?: number;
     level?: number;
     stripeCustomerId?: string;
-    savedCards?: string[];
+    savedCard?: string;
 
-    fullData: boolean; // полностью заполненные данные
-    is_blocked: boolean; //блокировка
+    fullData?: boolean; // полностью заполненные данные
+    is_blocked?: boolean; //блокировка
     admin_description?: string; // пометки пдмина
 
+    adresses?: IAdress[]; // Виртуальное поле (Получатели)
+    orders?: IOrder[]; // Виртуальное поле (Получатели)
+
     createdAt?: Date;
-
-    adresses?: IAddress[]; // Виртуальное поле (Получатели)
 }
 
-export interface IUserDocument extends Omit<IUser, "_id">, Document {
-    addresses?: Types.ObjectId[]; // виртуальное поле
-}
+export interface IUserDocument extends Omit<IUser, "_id" | "adresses" | "orders">, Document {}
 
 const userSchema = new Schema<IUserDocument>(
     {
@@ -53,12 +54,12 @@ const userSchema = new Schema<IUserDocument>(
         adress: { type: String, default: null },
         city: { type: String, default: null },
         zip_code_eng: { type: String, default: null },
-        notifications: { type: Boolean, default: null },
+        notifications: { type: Boolean, default: true },
         balance: { type: Number, default: 0 },
         bonus: { type: Number, default: 0 },
         level: { type: Number, default: 0 },
         stripeCustomerId: { type: String, default: null },
-        savedCards: [{ type: String, default: [] }],
+        savedCard: { type: String, default: null },
 
         fullData: { type: Boolean, default: false },
         is_blocked: { type: Boolean, default: false },
@@ -73,8 +74,14 @@ const userSchema = new Schema<IUserDocument>(
 );
 
 // ✅ Виртуальное поле addresses с адресами на которые возможно отправка
-userSchema.virtual("addresses", {
-    ref: "Address", // имя модели Address
+userSchema.virtual("adresses", {
+    ref: "Adress", // имя модели Address
+    //! это оно найдет все доки у которых в "userId" текущий "_id"
+    localField: "_id", // поле в User
+    foreignField: "userId", // поле в Address
+});
+userSchema.virtual("orders", {
+    ref: "Order", // имя модели Address
     localField: "_id", // поле в User
     foreignField: "userId", // поле в Address
 });

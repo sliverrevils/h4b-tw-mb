@@ -5,6 +5,8 @@ import "@/styles/tailwind.css";
 import "@/styles/globals.scss";
 import { ToastContainer } from "react-toastify";
 
+import "react-phone-input-2/lib/style.css";
+
 const interFont = Inter({
     variable: "--font-inter",
     weight: ["500", "600", "700", "800"],
